@@ -6,28 +6,49 @@ var app = express();
 app.use(morgan('combined'));
 
 
-var articleOne = {
-    title: 'Article One | Satya Sahoo',
-    heading: 'Article One',
-    date: 'sep 5,2017',
-    content: `
-          <p>
-            satya sahoo satya sahoo satya sahoo satya sahoosatya sahoo satya sahoosatya sahoo satya sahoo
-            satya sahoo satya sahoosatya sahoo satya sahoosatya sahoo satya sahoo
-            satya sahoo satya sahoosatya sahoo satya sahoosatya sahoo satya sahoo
-          </p>
-          <p>
-            satya sahoo satya sahoo satya sahoo satya sahoosatya sahoo satya sahoosatya sahoo satya sahoo
-            satya sahoo satya sahoosatya sahoo satya sahoosatya sahoo satya sahoo
-            satya sahoo satya sahoosatya sahoo satya sahoosatya sahoo satya sahoo
-          </p>
-          <p>
-            satya sahoo satya sahoo satya sahoo satya sahoosatya sahoo satya sahoosatya sahoo satya sahoo
-            satya sahoo satya sahoosatya sahoo satya sahoosatya sahoo satya sahoo
-            satya sahoo satya sahoosatya sahoo satya sahoosatya sahoo satya sahoo
-          </p> `
+var  articles = {
+   'article-one': {
+        title: 'Article One | Satya Sahoo',
+        heading: 'Article One',
+        date: 'sep 5,2017',
+        content: `
+              <p>
+                satya sahoo satya sahoo satya sahoo satya sahoosatya sahoo satya sahoosatya sahoo satya sahoo
+                satya sahoo satya sahoosatya sahoo satya sahoosatya sahoo satya sahoo
+                satya sahoo satya sahoosatya sahoo satya sahoosatya sahoo satya sahoo
+              </p>
+              <p>
+                satya sahoo satya sahoo satya sahoo satya sahoosatya sahoo satya sahoosatya sahoo satya sahoo
+                satya sahoo satya sahoosatya sahoo satya sahoosatya sahoo satya sahoo
+                satya sahoo satya sahoosatya sahoo satya sahoosatya sahoo satya sahoo
+              </p>
+              <p>
+                satya sahoo satya sahoo satya sahoo satya sahoosatya sahoo satya sahoosatya sahoo satya sahoo
+                satya sahoo satya sahoosatya sahoo satya sahoosatya sahoo satya sahoo
+                satya sahoo satya sahoosatya sahoo satya sahoosatya sahoo satya sahoo
+              </p> `
      
     
+    },
+   'article-two': { 
+        title: 'Article Two | Satya Sahoo',
+        heading: 'Article Two',
+        date: 'sep 5,2017',
+        content: `
+              <p>
+                its article two page 
+              </p> `
+              
+     },
+   'articl-three': { 
+        title: 'Article three | Satya Sahoo',
+        heading: 'Article three',
+        date: 'sep 5,2017',
+        content: `
+              <p>
+               its article three page setup
+              </p> `
+     }
 };
 
 function createTemplate (data) {
@@ -73,16 +94,11 @@ app.get('/', function (req, res) {
   res.sendFile(path.join(__dirname, 'ui', 'index.html'));
 });
 
-app.get('/article-one', function (req, res) {
-  res.send(createTemplate(articleOne));
+app.get('/:articleName', function (req, res) {
+  var articleName = req.params.articleName;
+  res.send(createTemplate(articles[articleName]));
  });
-app.get('/article-two', function (req, res) {
-  res.sendFile(path.join(__dirname, 'ui', 'article-two.html'));
-});
 
-app.get('/article-three', function (req, res) {
-  res.sendFile(path.join(__dirname, 'ui', 'article-three.html'));
-});
 
 app.get('/ui/style.css', function (req, res) {
   res.sendFile(path.join(__dirname, 'ui', 'style.css'));
