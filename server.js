@@ -10,7 +10,7 @@ var  articles = {
    'article-one': {
         title: 'Article One | Satya Sahoo',
         heading: 'Article One',
-        date: 'sep 5,2017',
+        date: 'july 9,2017',
         content: `
               <p>
                 satya sahoo satya sahoo satya sahoo satya sahoosatya sahoo satya sahoosatya sahoo satya sahoo
