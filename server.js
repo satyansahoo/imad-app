@@ -30,14 +30,14 @@ var articleOne = {
     
 };
 
-function createTemplete (data) {
+function createTemplate (data) {
     var titile = data.title;
     var date = data.date;
     var heading = data.heading;
     var content = data.content;
 
     
-    var htmlTemplete =`
+    var htmlTemplate =`
      <html>
         <head>
             <title>
@@ -65,7 +65,7 @@ function createTemplete (data) {
         </body>
     </html>
   `;
-  return htmlTemplete;
+  return htmlTemplate;
 }
 
 
